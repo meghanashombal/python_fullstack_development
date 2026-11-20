@@ -56,7 +56,7 @@ def student_form(request):
 
     return render(
         request,
-        'Students/student_form.html',
+        'students/student_form.html',
         {'form': form}
     )
 
