@@ -1,102 +1,37 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Registered Students</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 30px;
-            background-color: #f4f6f9;
-        }
-
-        h2 {
-            color: darkblue;
-            text-align: center;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: white;
-            margin-top: 20px;
-        }
-
-        th {
-            background-color: #007bff;
-            color: white;
-            padding: 12px;
-        }
-
-        td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: center;
-        }
-
-        tr:hover {
-            background-color: #f2f2f2;
-        }
-
-        .button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: green;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration students</title>
 </head>
-
 <body>
+    <h2>Registered students</h2>
 
-    <h2>Registered Students</h2>
+<table border="1">
 
-    <h3>Total Students: {{ students.count }}</h3>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Department</th>
+    </tr>
 
-    <table>
+    {% for students in students %}
 
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Age</th>
-                <th>Department</th>
-            </tr>
-        </thead>
+    <tr>
+        <td>{{ students.name }}</td>
+        <td>{{ students.email }}</td>
+        <td>{{ students.age }}</td>
+        <td>{{ students.department }}</td>
+    </tr>
 
-        <tbody>
+    {% empty %}
 
-            {% for student in students %}
+    <tr>
+        <td colspan="4">No students found</td>
+    </tr>
 
-            <tr>
-                <td>{{ student.name }}</td>
-                <td>{{ student.email }}</td>
-                <td>{{ student.age }}</td>
-                <td>{{ student.department }}</td>
-            </tr>
-
-            {% empty %}
-
-            <tr>
-                <td colspan="4">No students registered yet!</td>
-            </tr>
-
-            {% endfor %}
-
-        </tbody>
-
-    </table>
-
-    <center>
-        <a href="{% url 'home' %}" class="button">
-            Add New Student
-        </a>
-    </center>
-
+    {% endfor %}
 </body>
 </html>
-exit
